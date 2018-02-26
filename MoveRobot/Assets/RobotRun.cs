@@ -6,6 +6,7 @@ using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
 
+
 public class RobotRun : MonoBehaviour {
 
     float S_speed = 0,R_speed = 0;
@@ -29,13 +30,15 @@ public class RobotRun : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
+    	//DontDestroyOnLoad(transform.gameObject);
+    	
         lines = Read.ReadFile();//テキスト読み込み
     }
 
 	void OnCollisionStay(Collision other)//接触中
     {
-    	if (other.gameObject.tag == "wall"){
-        //	Destroy(other.gameObject);  	
+    	if (other.gameObject.tag == "wall" || true){
+        	//Destroy(other.gameObject);  	
 
         	//はじめの衝突位置
     		float other_x = other.contacts[0].point.x;
@@ -65,7 +68,7 @@ public class RobotRun : MonoBehaviour {
 
 	void OnCollisionExit(Collision other)//非接触
     {
-    	if (other.gameObject.tag == "wall"){
+    	if (other.gameObject.tag == "wall" || true){
         //	Destroy(other.gameObject);  	
         	touch = 0;
         }
@@ -97,11 +100,11 @@ public class RobotRun : MonoBehaviour {
 	void CompassSensor(){
     	compass = this.transform.localEulerAngles.y;
     }
-    
+	
 	// Update is called once per frame
 	void Update () {
     	//output = "" + touch + " " + L_moter + " " + R_moter + " " + S_speed + " " + R_speed;
-        
+  
     	UltrasonicSensor();
     	CompassSensor();
     	
@@ -135,6 +138,7 @@ public class RobotRun : MonoBehaviour {
         	R_moter = 0;
         }
         //for(int i = 0; i < 100000000;i++);
+		
     }
 
     void arduino(){

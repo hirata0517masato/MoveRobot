@@ -1,21 +1,12 @@
 ﻿#include"MoveRobot.h"
 
 void loop() { 
-	int a = 3;
-	print ( a / 2 );
+	if(bumper() == 1){
+		motor(50,-50);
+	}else{
+		motor(50,50);
+	}
 }
-
-
-/*
-#include"MoveRobot.h"
-
-void loop() { 
-	int c = compass();
-
-	int p = 90 - c;
-
-	motor(p,-p);
-}*/
 
 
 /*

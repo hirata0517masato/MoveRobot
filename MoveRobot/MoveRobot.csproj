@@ -82,6 +82,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Read.cs" />
+    <Compile Include="Assets\RestartButton.cs" />
     <Compile Include="Assets\RobotRun.cs" />
     <Compile Include="Assets\formula.cs" />
     <Compile Include="Assets\pair.cs" />
