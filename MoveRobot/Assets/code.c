@@ -1,11 +1,13 @@
 ﻿#include"MoveRobot.h"
 
 void loop() { 
-	if(bumper() == 1){
-		motor(50,-50);
-	}else{
-		motor(50,50);
-	}
+	for(int i = 0; i < 53; i++)
+    {
+        motor(100,0);
+    }
+    for(int i = 0; i < 53; i++){
+        motor(0,100);
+    }
 }
 
 

@@ -31,7 +31,7 @@ public class RobotRun : MonoBehaviour {
     void Start()
     {
     	//DontDestroyOnLoad(transform.gameObject);
-    	
+    	variable.del(0);//不要な変数の削除
         lines = Read.ReadFile();//テキスト読み込み
     }
 

@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 
 class variable{
 	public static Dictionary<string, pair<double,string>> dic = new Dictionary<string, pair<double,string>>();
+	public static int max_block_num = 0;
 	
 	public static string name(string name, int block){//ïœêîñºåüçı
 		while(block >= 0){
@@ -55,8 +56,11 @@ class variable{
 						string[] ss = s.Split(' ');
 						pair<double,string> tmp = new pair<double,string>(new Parser(formula(block,ss,0,ss.Length)).expr().first,words[0]);
 						dic.Add( block.ToString() + name,tmp);
-								
-					}else dic.Add( block.ToString() + name,new pair<double,string>(0,words[0]));
+						if(block > max_block_num)max_block_num = block;		
+					}else{
+						dic.Add( block.ToString() + name,new pair<double,string>(0,words[0]));
+						if(block > max_block_num)max_block_num = block;
+					}
 					s = "";
 					flag = false;
 				}else{
@@ -67,14 +71,17 @@ class variable{
 	}
 	
 	public static void del(int block){//ïsóvÇ»ïœêîÇÃçÌèú
-		string del = block.ToString();
-		var del_list = new List<string>();
+		while(block <= max_block_num){
+			string del = max_block_num.ToString();
+			var del_list = new List<string>();
 				
-		foreach (string key in dic.Keys) {
-			if(key.IndexOf(del) == 0){
-				del_list.Add(key);
-			}
+			foreach (string key in dic.Keys) {
+				if(key.IndexOf(del) == 0){
+					del_list.Add(key);
+				}
+        	}
+        	foreach (string key in del_list)dic.Remove(key);
+        	max_block_num--;
         }
-        foreach (string key in del_list)dic.Remove(key);
 	}	
 }
