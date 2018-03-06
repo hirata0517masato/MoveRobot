@@ -142,8 +142,10 @@ public class RobotRun : MonoBehaviour {
     }
 
     void arduino(){
-        string[] words = sensor_value(lines[line_num].Trim().Split(' '));
-
+        
+		string[] words = sensor_value(lines[line_num].Trim().Split(' '));
+		
+	
         //	Console.WriteLine(block + " " + lines[i]);
 		//output = lines[line_num];
 

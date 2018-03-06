@@ -13,11 +13,11 @@ class Read {
 		List<string> list = new List<string>(text.Split('\n'));
 		
 		for(int i = 0; i < list.Count; i++){
-		/*	if(list[i].Length == 0){
+			if(list[i].Trim().Length <= 0){
 				list.RemoveAt(i);
 				i--;
 				continue;
-			}*/
+			}
 			
 			if(list[i].IndexOf("#include") != -1) list[i] = "";//include•¶‚ÍÁ‹Ž
 			
