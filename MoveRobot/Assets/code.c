@@ -1,14 +1,30 @@
 ﻿#include"MoveRobot.h"
 
 void loop() { 
+
+	motor(100,100);
+
+
+
+
+
+
+
+
+	
+	motor(-100,-100);
+}
+/*
+void loop() { 
 	for(int i = 0; i < 53; i++)
     {
         motor(100,0);
     }
+
     for(int i = 0; i < 53; i++){
         motor(0,100);
     }
-}
+}*/
 
 
 /*
