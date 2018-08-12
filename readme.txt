@@ -1,6 +1,6 @@
 ŠJ”­ŠÂ‹«
 OS: Windows10
-Unity: 5.5.2f1 (64-bit)
+Unity: 5.5.4p4 (64-bit)
 
 Žg‚¢•û
 MoveRobot/Assets/ReadPath.txt
