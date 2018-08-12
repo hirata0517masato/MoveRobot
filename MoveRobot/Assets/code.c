@@ -1,18 +1,11 @@
 ﻿#include"MoveRobot.h"
 
 void loop() { 
-
-	motor(100,100);
-
-
-
-
-
-
-
-
-	
-	motor(-100,-100);
+	if(bumper() == 1){
+		motor(50,-50);
+	}else{
+		motor(50,50);
+	}
 }
 /*
 void loop() { 
