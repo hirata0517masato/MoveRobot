@@ -6,9 +6,9 @@ using System.Text.RegularExpressions;
 using UnityEngine;
 
 class Read {
-	static List<string> NonFree(string text){//ƒ\[ƒXƒR[ƒh®Œ`
+	static List<string> NonFree(string text){//ï¿½\ï¿½[ï¿½Xï¿½Rï¿½[ï¿½hï¿½ï¿½ï¿½`
 		text = text.Replace("\t", " ");
-		text = CurlyBracket(text);//’†‚©‚Á‚±‚ÌˆÊ’u‚ğ’²®
+		text = CurlyBracket(text);//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÌˆÊ’uï¿½ğ’²ï¿½
 		
 		List<string> list = new List<string>(text.Split('\n'));
 		
@@ -19,7 +19,7 @@ class Read {
 				continue;
 			}
 			
-			if(list[i].IndexOf("#include") != -1) list[i] = "";//include•¶‚ÍÁ‹
+			if(list[i].IndexOf("#include") != -1) list[i] = "";//includeï¿½ï¿½ï¿½Íï¿½ï¿½ï¿½
 			
 			list[i] = list[i].Replace(","," , ");
 			list[i] = list[i].Replace("="," = ").Replace("<"," < ").Replace(">"," > ").Replace("!"," ! ");
@@ -31,18 +31,18 @@ class Read {
 
 			//list[i] = list[i].Replace("( -","( 0 -").Replace(" = -"," = 0 -");
 
-			if(list[i] == "void loop ( ) {")list[i] = "while ( 1 ) {";//loopŠÖ”‚Íwhile(1)‚É•ÏX
+			if(list[i] == "void loop ( ) {")list[i] = "while ( 1 ) {";//loopï¿½Öï¿½ï¿½ï¿½while(1)ï¿½É•ÏX
         }
         list = ForToWhile(list);
         list = FormulaTransform(list);
         return list;
 	}
 
-	static string CurlyBracket(string text){//’†‚©‚Á‚±‚ÌˆÊ’u’²®
+	static string CurlyBracket(string text){//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÌˆÊ’uï¿½ï¿½ï¿½ï¿½
 		text = text.Replace(")", " ) ").Replace("(", " ( ").Replace("{", " { ").Replace("}", " } ");
 		string[] temp = {"if ","else", "while ", "for " };
 		
-		foreach (string s in temp){//ŠJn‚©‚Á‚±
+		foreach (string s in temp){//ï¿½Jï¿½nï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			int n = 0;
 			while(true){
 				int pos = text.IndexOf(s,n);	
@@ -61,7 +61,7 @@ class Read {
 		}
 
 		int nn = text.Length-1;
-		while(true){//•Â‚¶‚©‚Á‚±
+		while(true){//ï¿½Â‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			int pos = text.LastIndexOf("else",nn);	
 			if(pos == -1)break;
 				
@@ -85,10 +85,10 @@ class Read {
 			if(words[0] == "for"){
 				string[] for_words = list[i].Trim().Split(new char [] {'(', ';' , ')'});
 				
-				list.Insert(i, for_words[1] + " ;");//‰Šú‰»®
+				list.Insert(i, for_words[1] + " ;");//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				list.Insert(i, "{");
 				i+=2;
-				list[i] = "while (" + for_words[2] + ") {"; //ğŒ®
+				list[i] = "while (" + for_words[2] + ") {"; //ï¿½ï¿½ï¿½
 
 				int k = i+1,stack = 1;
 				do{
@@ -103,7 +103,7 @@ class Read {
 					}	
 					k++;
 				}while(stack > 0);
-				list.Insert(k-1, for_words[3] + " ;");//‘‰Á®	
+				list.Insert(k-1, for_words[3] + " ;");//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½	
 				if(list.Count < k+2)list.Add("}");
 				else list.Insert(k+1, "}");
 			}
@@ -111,16 +111,16 @@ class Read {
 		return list;
 	}
 
-	static List<string> FormulaTransform(List<string> list){//ƒCƒ“ƒNƒŠƒƒ“ƒg‚È‚Ç‚Ì•ÏŠ·
+	static List<string> FormulaTransform(List<string> list){//ï¿½Cï¿½ï¿½ï¿½Nï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½gï¿½È‚Ç‚Ì•ÏŠï¿½
 		for(int i = 0; i < list.Count; i++){
         	string[] words = list[i].Trim().Split(' ');
 			if(words.Length >= 3 && words[0] != "motor" && words[0] != "int" && words[0] != "double" && words[0] != "print" && words[0] != "if" && words[0] != "while" && words[0] != "}"){
 				if(words[1] != "="){
-					if(words[1] == words[2]){//Œã’u
+					if(words[1] == words[2]){//ï¿½ï¿½u
 						list[i] = words[0] + " = " + words[0] + " " +  words[1] + " 1 ;";
-					}else if(words[0] == words[1]){//‘O’u
+					}else if(words[0] == words[1]){//ï¿½Oï¿½u
 						list[i] = words[2] + " = " + words[2] + " " +  words[1] + " 1 ;";
-					}else if(words[2] == "="){//+=‚Æ‚©
+					}else if(words[2] == "="){//+=ï¿½Æ‚ï¿½
 						list[i] = words[0] + " = " + words[0] + " " +  words[1] + " ( ";
 						for(int j = 3; j < words.Length-1; j++){
 							list[i] += words[j]; 
@@ -133,7 +133,7 @@ class Read {
 		return list;
 	}
 	
-	static string del_comment(string text){//ƒeƒLƒXƒg‚©‚çCƒ‰ƒCƒN‚ÈƒRƒƒ“ƒg‚ğíœ
+	static string del_comment(string text){//ï¿½eï¿½Lï¿½Xï¿½gï¿½ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½Cï¿½Nï¿½ÈƒRï¿½ï¿½ï¿½ï¿½ï¿½gï¿½ï¿½íœ
 
 		while(true){
 			int start = text.IndexOf("/*");
@@ -145,51 +145,64 @@ class Read {
 		return text;
 	}
 	
-	// “Ç‚İ‚İŠÖ”
+	// ï¿½Ç‚İï¿½ï¿½İŠÖï¿½
     public static string[] ReadFile(){
-        // FileReadTest.txtƒtƒ@ƒCƒ‹‚ğ“Ç‚İ‚Ş
-        FileInfo fi;
-        if (Application.platform == RuntimePlatform.OSXEditor ||Application.platform == RuntimePlatform.WindowsEditor) {
- 			fi = new FileInfo(Application.dataPath + "/" + "ReadPath.txt");
-		}else{
-			fi = new FileInfo("ReadPath.txt");
-		}
-        string path= "";
-        try{
-            // ˆês–ˆ“Ç‚İ‚İ
-            using (StreamReader sr = new StreamReader(fi.OpenRead(), Encoding.UTF8))
-            {
-                path = sr.ReadToEnd();
-            }
-        }catch (Exception e){
-            // ‰üsƒR[ƒh
-            path += SetDefaultText();
-        }
+        // FileReadTest.txtï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½ï¿½Ç‚İï¿½ï¿½ï¿½
 
-		if (Application.platform == RuntimePlatform.OSXEditor ||Application.platform == RuntimePlatform.WindowsEditor) {
-        	fi = new FileInfo(Application.dataPath + "/" + path);
-        }else{
-        	fi = new FileInfo(path);
-        }
-        string text= "";
-        try{
-            // ˆês–ˆ“Ç‚İ‚İ
-            using (StreamReader sr = new StreamReader(fi.OpenRead(), Encoding.UTF8))
-            {
-                text = sr.ReadToEnd();
-            }
-        }catch (Exception e){
-            // ‰üsƒR[ƒh
-            text += SetDefaultText();
-        }
-        
+		string path = "",text = "";
+
+		if(Application.platform == RuntimePlatform.WebGLPlayer) {
+ 			
+			
+
+
+		}else{
+        	FileInfo fi;
+			if (Application.platform == RuntimePlatform.OSXEditor
+					|| Application.platform == RuntimePlatform.WindowsEditor){
+				fi = new FileInfo(Application.dataPath + "/" + "ReadPath.txt");
+			}else{
+				fi = new FileInfo("ReadPath.txt");
+			}
+			
+			try{
+				// ï¿½ï¿½sï¿½ï¿½ï¿½Ç‚İï¿½ï¿½ï¿½
+				using (StreamReader sr = new StreamReader(fi.OpenRead(), Encoding.UTF8))
+				{
+					path = sr.ReadToEnd();
+				}
+			}catch (Exception e){
+				// ï¿½ï¿½ï¿½sï¿½Rï¿½[ï¿½h
+				path += SetDefaultText();
+			}
+
+			if (Application.platform == RuntimePlatform.OSXEditor
+					|| Application.platform == RuntimePlatform.WindowsEditor){
+			
+				fi = new FileInfo(Application.dataPath + "/" + path);
+			}else{
+				fi = new FileInfo(path);
+			}
+			
+			try{
+				// ï¿½ï¿½sï¿½ï¿½ï¿½Ç‚İï¿½ï¿½ï¿½
+				using (StreamReader sr = new StreamReader(fi.OpenRead(), Encoding.UTF8))
+				{
+					text = sr.ReadToEnd();
+				}
+			}catch (Exception e){
+				// ï¿½ï¿½ï¿½sï¿½Rï¿½[ï¿½h
+				text += SetDefaultText();
+			}
+		}
+
         text = del_comment(text);
         List<string> list = NonFree(text);   
         return list.ToArray(); 
     }
 
-    // ‰üsƒR[ƒhˆ—
+    // ï¿½ï¿½ï¿½sï¿½Rï¿½[ï¿½hï¿½ï¿½ï¿½ï¿½
     static string SetDefaultText(){
-        return "C#‚ \n";
+        return "C#ï¿½ï¿½\n";
     }
 }

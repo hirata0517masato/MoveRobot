@@ -104,7 +104,9 @@ public class RobotRun : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
     	//output = "" + touch + " " + L_moter + " " + R_moter + " " + S_speed + " " + R_speed;
-  
+  	//output = "" + Application.dataPath;
+
+
     	UltrasonicSensor();
     	CompassSensor();
     	
@@ -137,7 +139,7 @@ public class RobotRun : MonoBehaviour {
         	L_moter = 0;
         	R_moter = 0;
         }
-        //for(int i = 0; i < 100000000;i++);
+        for(int i = 0; i < 100000000;i++);
 		
     }
 
@@ -147,7 +149,7 @@ public class RobotRun : MonoBehaviour {
 		
 	
         //	Console.WriteLine(block + " " + lines[i]);
-		//output = lines[line_num];
+		output = lines[line_num];
 
 		/*output = "";
 		foreach(string i in words){
