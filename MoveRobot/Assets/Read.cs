@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
+using System.Runtime.InteropServices;
 
 class Read {
 	static List<string> NonFree(string text){//?\?[?X?R?[?h???`
@@ -146,7 +147,9 @@ class Read {
 		return text;
 	}
 
-	
+	[DllImport("__Internal")]
+  	public static extern string ReadJS();
+
 	// ????????
     public static string[] ReadFile(){
         // FileReadTest.txt?t?@?C?????????
@@ -154,10 +157,9 @@ class Read {
 		string path = "",text = "";
 
 		if(Application.platform == RuntimePlatform.WebGLPlayer) {
- 			Read_WebGL rd = new Read_WebGL();
- 			
- 			text = rd.read_webgl();
-
+ 			 
+			text = ReadJS();
+			//text = "motor(100,100);";
 		}else{
         	FileInfo fi;
 			if (Application.platform == RuntimePlatform.OSXEditor
