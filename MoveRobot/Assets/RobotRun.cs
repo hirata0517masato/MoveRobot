@@ -104,7 +104,9 @@ public class RobotRun : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
     	//output = "" + touch + " " + L_moter + " " + R_moter + " " + S_speed + " " + R_speed;
-  
+  	//output = "" + Application.dataPath;
+
+
     	UltrasonicSensor();
     	CompassSensor();
     	
