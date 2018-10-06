@@ -1,8 +1,10 @@
 var ReadPlugin = {
   ReadJS: function() {
     
-    var ret = 'motor(100,100);';
-    
+    //var ret = 'motor(100,100);';
+
+    var ret = document.getElementById('code').value;
+
     var size = lengthBytesUTF8(ret) + 1; // null文字終端となるため+1
     var ptr = _malloc(size);
     // マニュアルではいまだにwriteStringToMemory()を使用したコードを記載しているが
