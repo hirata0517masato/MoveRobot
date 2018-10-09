@@ -1,6 +1,6 @@
 WebGL
 PlayerPath?
-/Users/masato/Desktop/MoveRobot_WebGL
+C:/Users/Masato/Desktop/MoveRobot_WebGL
 SceneListBegin?
 Assets/MoveRobot.unity
 SceneListEnd?
