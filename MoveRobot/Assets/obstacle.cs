@@ -17,7 +17,7 @@ public class obstacle : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-    	List<string> texts = new List<string>(ReadFileObstacle().Split('\n'));
+    	List<string> texts = ReadFileObstacle();
         for(int i = 0; i < texts.Count; i++){
             List<string> pos = new List<string>(texts[i].Split(','));
             Make("box",float.Parse(pos[0]), float.Parse(pos[1]) );
@@ -41,14 +41,17 @@ public class obstacle : MonoBehaviour {
         num++;
     }
 	
-    string ReadFileObstacle(){
+	[DllImport("__Internal")]
+  	public static extern string ReadOBJS();
+
+    List<string> ReadFileObstacle(){
 
 		string path = "",text = "";
 
-		/*if(Application.platform == RuntimePlatform.WebGLPlayer) {
- 			WebGLInput.captureAllKeyboardInput = false;
-			text = ReadJS();
-		}else{*/
+		if(Application.platform == RuntimePlatform.WebGLPlayer) {
+ 			//WebGLInput.captureAllKeyboardInput = false;
+			text = ReadOBJS();
+		}else{
         	FileInfo fi;
 			if (Application.platform == RuntimePlatform.OSXEditor
 					|| Application.platform == RuntimePlatform.WindowsEditor){
@@ -86,13 +89,37 @@ public class obstacle : MonoBehaviour {
 				// ???s?R?[?h
 				text += SetDefaultText();
 			}
-		//}
+		}
 
-        return text; 
+        return new List<string>(text.Split('\n'));; 
     }
 
     static string SetDefaultText(){
         return "C#??\n";
     }
     
+}
+
+public class ReadOB_WebGL : MonoBehaviour {
+	public string result = "";
+
+	public string readOB_webgl() {
+        StartCoroutine(textOBLoad() );
+        return result;
+    }
+    
+	IEnumerator textOBLoad() { 
+    	//string filepath = Application.streamingAssetsPath + "/code/code.ino";
+    	string filepath = "/code/code.ino";
+    	if (filepath.Contains ("://") || filepath.Contains (":///"))
+    	{
+        	WWW www = new WWW (filepath);
+        	yield return www;
+        	result = www.text;
+        	//print (result);
+    	} else {
+        	result = File.ReadAllText (filepath);
+        	//print (result);
+    	}
+	}
 }
