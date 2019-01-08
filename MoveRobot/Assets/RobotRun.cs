@@ -37,7 +37,7 @@ public class RobotRun : MonoBehaviour {
 
 	void OnCollisionStay(Collision other)//接触中
     {
-    	if (other.gameObject.tag == "wall" || true){
+    	//if (other.gameObject.tag == "wall" || true){
         	//Destroy(other.gameObject);  	
 
         	//はじめの衝突位置
@@ -63,15 +63,15 @@ public class RobotRun : MonoBehaviour {
     		}
 
     		//output = ""+(int)angle + " "+(int)robot_angle + " " +touch;
-        }
+        //}
 	}
 
 	void OnCollisionExit(Collision other)//非接触
     {
-    	if (other.gameObject.tag == "wall" || true){
+    	//if (other.gameObject.tag == "wall" || true){
         //	Destroy(other.gameObject);  	
         	touch = 0;
-        }
+        //}
 	}
      
     void UltrasonicSensor(){
@@ -106,7 +106,7 @@ public class RobotRun : MonoBehaviour {
     	//output = "" + touch + " " + L_moter + " " + R_moter + " " + S_speed + " " + R_speed;
   	//output = "" + Application.dataPath;
 
-
+        
     	UltrasonicSensor();
     	CompassSensor();
     	
