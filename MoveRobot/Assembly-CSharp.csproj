@@ -69,7 +69,9 @@
     <Compile Include="Assets\RobotRun.cs" />
     <Compile Include="Assets\variable.cs" />
     <None Include="Assets\code.txt" />
+    <None Include="Assets\obstacle.txt" />
     <None Include="Assets\注意点.txt" />
+    <None Include="Assets\ReadPathOB.txt" />
     <None Include="Assets\ReadPath.txt" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>/Users/masato/Desktop/GitHub/MoveRobot/MoveRobot/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
