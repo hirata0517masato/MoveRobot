@@ -157,7 +157,10 @@ class Read {
 		string path = "",text = "";
 
 		if(Application.platform == RuntimePlatform.WebGLPlayer) {
- 			WebGLInput.captureAllKeyboardInput = false;
+ 			//WebGLInput.captureAllKeyboardInput = false;
+			#if UNITY_WEBGL && !(UNITY_EDITOR)//！UNITY_EDITOR && UNITY_WEBGL
+				WebGLInput.captureAllKeyboardInput = false; 
+			#endif
 			text = ReadJS();
 			//text = "motor(100,100);";
 		}else{
