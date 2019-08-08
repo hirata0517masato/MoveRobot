@@ -14,15 +14,22 @@ using System.Runtime.InteropServices;
 public class obstacle : MonoBehaviour {
 
     int num = 0;
+	public static int flagnum = 0;
     // Use this for initialization
     void Start()
     {
     	List<string> texts = ReadFileObstacle();
         for(int i = 0; i < texts.Count; i++){
             List<string> pos = new List<string>(texts[i].Split(','));
-            Make("box",float.Parse(pos[0]), float.Parse(pos[1]) );
+			if(pos[0] == "box")Make("box",float.Parse(pos[1]), float.Parse(pos[2]) );
+			else if(pos[0] == "flag"){
+				Make("flag",float.Parse(pos[1]), float.Parse(pos[2]) );
+				flagnum++;
+			}
+
         }
 
+		if(flagnum <= 0)flagnum = 999;
         /*for(int i = 0; i < 15; i++){
             Make("box",UnityEngine.Random.Range(-14,14), UnityEngine.Random.Range(-14,14));
         } */  

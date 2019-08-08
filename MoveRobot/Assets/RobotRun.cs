@@ -18,7 +18,7 @@ public class RobotRun : MonoBehaviour {
 	int touch = 0;//0 = non, 1 = body, 2 = bamper
 	float[] distance = new float[4];              // 計測距離 f,b,l,r
 	double compass; //方位センサー
-
+    float start_time_s,play_time;
 	string output = "";
 	
 	 // 読み込んだ情報をGUIとして表示 ただし変換後のコード
@@ -30,6 +30,7 @@ public class RobotRun : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
+        start_time_s = Time.time;
     	//DontDestroyOnLoad(transform.gameObject);
     	variable.del(0);//不要な変数の削除
         lines = Read.ReadFile();//テキスト読み込み
@@ -37,6 +38,11 @@ public class RobotRun : MonoBehaviour {
 
 	void OnCollisionStay(Collision other)//接触中
     {
+        if(other.gameObject.tag == "flag"){
+            Destroy(other.gameObject);
+            obstacle.flagnum--;
+            return;
+        }
     	//if (other.gameObject.tag == "wall" || true){
         	//Destroy(other.gameObject);  	
 
@@ -105,42 +111,51 @@ public class RobotRun : MonoBehaviour {
 	void Update () {
     	//output = "" + touch + " " + L_moter + " " + R_moter + " " + S_speed + " " + R_speed;
   	//output = "" + Application.dataPath;
-
         
-    	UltrasonicSensor();
-    	CompassSensor();
-    	
-        arduino();
-    	
-    	//speed_set
-        S_speed = (L_moter + R_moter) / 2;
-        R_speed = L_moter - R_moter;
 
-		if(touch == 1){//body
-			if(S_speed < 0)S_speed =  0;
-			R_speed /= 2;
-		}else if(touch == 2){//bamper
-			if(S_speed > 0)S_speed =  0;
-			R_speed /= 2;
-		}
-		
-		//move
-        this.transform.position += this.transform.forward * Time.deltaTime * 0.080f * S_speed; 
-        transform.Rotate(new Vector3(0, Time.deltaTime * 1.0f* R_speed, 0));
+        if(obstacle.flagnum <= 0){
+            output = "ミッションクリア！！" + make_time(play_time);
 
-		//浮かばないように
-		Vector3 pos = transform.position;
-		pos.y = 0;
-		transform.position = pos;
-		
-		line_num++;
-        if (line_num >= lines.Length){
-        	line_num = lines.Length-1;
-        	L_moter = 0;
-        	R_moter = 0;
-        }
+            
+
+        } else{
+            play_time = Time.time - start_time_s;
+            output = make_time(play_time);
+
+    	    UltrasonicSensor();
+    	    CompassSensor();
+    	
+            arduino();
+    	
+    	    //speed_set
+            S_speed = (L_moter + R_moter) / 2;
+            R_speed = L_moter - R_moter;
+
+		    if(touch == 1){//body
+			    if(S_speed < 0)S_speed =  0;
+			    R_speed /= 2;
+            }else if(touch == 2){//bamper
+                if(S_speed > 0)S_speed =  0;
+                R_speed /= 2;
+            }
+            
+            //move
+            this.transform.position += this.transform.forward * Time.deltaTime * 0.080f * S_speed; 
+            transform.Rotate(new Vector3(0, Time.deltaTime * 1.0f* R_speed, 0));
+
+            //浮かばないように
+            Vector3 pos = transform.position;
+            pos.y = 0;
+            transform.position = pos;
+            
+            line_num++;
+            if (line_num >= lines.Length){
+                line_num = lines.Length-1;
+                L_moter = 0;
+                R_moter = 0;
+            }
         //for(int i = 0; i < 100000000;i++);
-		
+        }
     }
 
     void arduino(){
@@ -341,5 +356,18 @@ public class RobotRun : MonoBehaviour {
 		}
 		
 		return sl.ToArray();
+    }
+
+    string make_time(float t){
+        int h,m,s;
+        h = (int)t/3600;
+        t %= 3600;
+
+        m = (int)t/60;
+        t %= 60;
+
+        s = (int)t;
+
+        return ""+h+":"+m+":"+s;
     }
 }
