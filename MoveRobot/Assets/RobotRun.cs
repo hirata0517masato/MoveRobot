@@ -24,7 +24,7 @@ public class RobotRun : MonoBehaviour {
 	 // 読み込んだ情報をGUIとして表示 ただし変換後のコード
     void OnGUI()
     {
-        if(output.Length != 0)GUI.TextArea(new Rect(5, 5, Screen.width-10, 50), output);
+        if(output.Length != 0)GUI.TextArea(new Rect(Screen.width/4, 5, Screen.width-10, 50), output);
     }
     
     // Use this for initialization

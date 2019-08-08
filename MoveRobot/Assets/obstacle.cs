@@ -18,6 +18,8 @@ public class obstacle : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
+		num = 0;
+		flagnum = 0;
     	List<string> texts = ReadFileObstacle();
         for(int i = 0; i < texts.Count; i++){
             List<string> pos = new List<string>(texts[i].Split(','));
