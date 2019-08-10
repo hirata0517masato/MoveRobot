@@ -33,8 +33,8 @@ MoveRobot.exeと同じパスのReadPathOB.txt
 障害物(BOX),旗（Flag)を設置
 
 指定方法は
-Flag,10,3
-Box,-4,6
+flag,10,3
+box,-4,6
 
 など
 
@@ -45,8 +45,8 @@ Box,-4,6
 テキストボックス（右側）に記述された数値（座標）に障害物(BOX),旗（Flag)を設置
 
 指定方法は
-Flag,10,3
-Box,-4,6
+flag,10,3
+box,-4,6
 
 など
 
