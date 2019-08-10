@@ -16819,18 +16819,21 @@ extern const RuntimeType U3CtextLoadU3Ec__Iterator0_t4238218837_1_0_0 = { (void*
 extern const RuntimeType RestartButton_t2817159561_0_0_0 = { (void*)2053, 0, IL2CPP_TYPE_CLASS, 0, 0, 0 };
 extern const RuntimeType RestartButton_t2817159561_1_0_0 = { (void*)2053, 0, IL2CPP_TYPE_CLASS, 0, 1, 0 };
 
-extern const RuntimeType RobotRun_t1125469807_0_0_0 = { (void*)2054, 0, IL2CPP_TYPE_CLASS, 0, 0, 0 };
-extern const RuntimeType RobotRun_t1125469807_1_0_0 = { (void*)2054, 0, IL2CPP_TYPE_CLASS, 0, 1, 0 };
+extern const RuntimeType result_t1410183157_0_0_0 = { (void*)2054, 0, IL2CPP_TYPE_CLASS, 0, 0, 0 };
+extern const RuntimeType result_t1410183157_1_0_0 = { (void*)2054, 0, IL2CPP_TYPE_CLASS, 0, 1, 0 };
 
-extern const RuntimeType variable_t1275844243_0_0_0 = { (void*)2055, 0, IL2CPP_TYPE_CLASS, 0, 0, 0 };
-extern const RuntimeType variable_t1275844243_1_0_0 = { (void*)2055, 0, IL2CPP_TYPE_CLASS, 0, 1, 0 };
+extern const RuntimeType RobotRun_t1125469807_0_0_0 = { (void*)2055, 0, IL2CPP_TYPE_CLASS, 0, 0, 0 };
+extern const RuntimeType RobotRun_t1125469807_1_0_0 = { (void*)2055, 0, IL2CPP_TYPE_CLASS, 0, 1, 0 };
 
-extern const RuntimeType U3CPrivateImplementationDetailsU3E_t3057255366_0_0_0 = { (void*)2056, 0, IL2CPP_TYPE_CLASS, 0, 0, 0 };
-extern const RuntimeType U3CPrivateImplementationDetailsU3E_t3057255366_1_0_0 = { (void*)2056, 0, IL2CPP_TYPE_CLASS, 0, 1, 0 };
+extern const RuntimeType variable_t1275844243_0_0_0 = { (void*)2056, 0, IL2CPP_TYPE_CLASS, 0, 0, 0 };
+extern const RuntimeType variable_t1275844243_1_0_0 = { (void*)2056, 0, IL2CPP_TYPE_CLASS, 0, 1, 0 };
 
-extern const RuntimeType U24ArrayTypeU3D8_t3242499063_0_0_307 = { (void*)2057, 307, IL2CPP_TYPE_VALUETYPE, 0, 0, 0 };
-extern const RuntimeType U24ArrayTypeU3D8_t3242499063_0_0_0 = { (void*)2057, 0, IL2CPP_TYPE_VALUETYPE, 0, 0, 0 };
-extern const RuntimeType U24ArrayTypeU3D8_t3242499063_1_0_0 = { (void*)2057, 0, IL2CPP_TYPE_VALUETYPE, 0, 1, 0 };
+extern const RuntimeType U3CPrivateImplementationDetailsU3E_t3057255366_0_0_0 = { (void*)2057, 0, IL2CPP_TYPE_CLASS, 0, 0, 0 };
+extern const RuntimeType U3CPrivateImplementationDetailsU3E_t3057255366_1_0_0 = { (void*)2057, 0, IL2CPP_TYPE_CLASS, 0, 1, 0 };
+
+extern const RuntimeType U24ArrayTypeU3D8_t3242499063_0_0_307 = { (void*)2058, 307, IL2CPP_TYPE_VALUETYPE, 0, 0, 0 };
+extern const RuntimeType U24ArrayTypeU3D8_t3242499063_0_0_0 = { (void*)2058, 0, IL2CPP_TYPE_VALUETYPE, 0, 0, 0 };
+extern const RuntimeType U24ArrayTypeU3D8_t3242499063_1_0_0 = { (void*)2058, 0, IL2CPP_TYPE_VALUETYPE, 0, 1, 0 };
 
 Il2CppGenericClass IComparer_1_t884274696_GenericClass = { 171, { &GenInst_DefaultComparer_t3277344064_gp_0_0_0_0, NULL }, NULL };
 extern const RuntimeType IComparer_1_t884274696_0_0_0 = { &IComparer_1_t884274696_GenericClass, 0, IL2CPP_TYPE_GENERICINST, 0, 0, 0 };
@@ -16863,7 +16866,7 @@ extern const RuntimeType TimeSpanU5BU5D_t4291357516_0_0_0 = { (void*)&TimeSpan_t
 extern const RuntimeType TypeTagU5BU5D_t1563918664_0_0_0 = { (void*)&TypeTag_t3541821701_0_0_0, 0, IL2CPP_TYPE_SZARRAY, 0, 0, 0 };
 
 extern const RuntimeType ITrackingHandlerU5BU5D_t3758023570_0_0_0 = { (void*)&ITrackingHandler_t1244553475_0_0_0, 0, IL2CPP_TYPE_SZARRAY, 0, 0, 0 };
-extern const RuntimeType* const  g_Il2CppTypeTable[8778] = 
+extern const RuntimeType* const  g_Il2CppTypeTable[8780] = 
 {
 	&IEnumerator_1_t3512676632_0_0_0,
 	&RuntimeObject_0_0_0,
@@ -25565,6 +25568,8 @@ extern const RuntimeType* const  g_Il2CppTypeTable[8778] =
 	&Read_WebGL_t4000872781_0_0_3,
 	&RestartButton_t2817159561_0_0_0,
 	&RestartButton_t2817159561_1_0_0,
+	&result_t1410183157_0_0_0,
+	&result_t1410183157_1_0_0,
 	&RobotRun_t1125469807_0_0_0,
 	&RobotRun_t1125469807_1_0_0,
 	&Stack_1_t3794335208_0_0_1,

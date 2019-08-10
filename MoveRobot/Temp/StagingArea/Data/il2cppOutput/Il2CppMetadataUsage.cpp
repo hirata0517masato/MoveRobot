@@ -8082,7 +8082,6 @@ String_t* _stringLiteral2587139912;
 String_t* _stringLiteral2203903441;
 String_t* _stringLiteral1573465157;
 String_t* _stringLiteral463222831;
-String_t* _stringLiteral3706709580;
 String_t* _stringLiteral765121776;
 String_t* _stringLiteral489281466;
 String_t* _stringLiteral3883987365;
@@ -8096,6 +8095,7 @@ String_t* _stringLiteral2720825651;
 String_t* _stringLiteral1119271901;
 String_t* _stringLiteral1323333516;
 String_t* _stringLiteral3831650131;
+String_t* _stringLiteral591026506;
 String_t* _stringLiteral3074578292;
 String_t* _stringLiteral1643567794;
 String_t* _stringLiteral929511772;
@@ -16195,7 +16195,6 @@ extern void** const g_MetadataUsages[8111] =
 	(void**)(&_stringLiteral2203903441),
 	(void**)(&_stringLiteral1573465157),
 	(void**)(&_stringLiteral463222831),
-	(void**)(&_stringLiteral3706709580),
 	(void**)(&_stringLiteral765121776),
 	(void**)(&_stringLiteral489281466),
 	(void**)(&_stringLiteral3883987365),
@@ -16209,6 +16208,7 @@ extern void** const g_MetadataUsages[8111] =
 	(void**)(&_stringLiteral1119271901),
 	(void**)(&_stringLiteral1323333516),
 	(void**)(&_stringLiteral3831650131),
+	(void**)(&_stringLiteral591026506),
 	(void**)(&_stringLiteral3074578292),
 	(void**)(&_stringLiteral1643567794),
 	(void**)(&_stringLiteral929511772),
@@ -23567,10 +23567,12 @@ extern const uint32_t obstacle_Start_m736674335_MetadataUsageId = 7319;
 extern const uint32_t playtime_Start_m3882244471_MetadataUsageId = 7320;
 extern const uint32_t playtime_Update_m4014970661_MetadataUsageId = 7321;
 extern const uint32_t playtime_make_time_m3226406892_MetadataUsageId = 7322;
-extern const uint32_t variable__cctor_m1887894597_MetadataUsageId = 7323;
-extern const uint32_t variable_del_m993790452_MetadataUsageId = 7324;
-extern const uint32_t variable_formula_m961413057_MetadataUsageId = 7325;
-extern const uint32_t variable_make_m1241274960_MetadataUsageId = 7326;
-extern const uint32_t variable_name_m816570228_MetadataUsageId = 7327;
-extern const uint32_t variable_read_m1794068944_MetadataUsageId = 7328;
-extern const uint32_t variable_sub_m1536292910_MetadataUsageId = 7329;
+extern const uint32_t result_Start_m3819231099_MetadataUsageId = 7323;
+extern const uint32_t result_Update_m727842097_MetadataUsageId = 7324;
+extern const uint32_t variable__cctor_m1887894597_MetadataUsageId = 7325;
+extern const uint32_t variable_del_m993790452_MetadataUsageId = 7326;
+extern const uint32_t variable_formula_m961413057_MetadataUsageId = 7327;
+extern const uint32_t variable_make_m1241274960_MetadataUsageId = 7328;
+extern const uint32_t variable_name_m816570228_MetadataUsageId = 7329;
+extern const uint32_t variable_read_m1794068944_MetadataUsageId = 7330;
+extern const uint32_t variable_sub_m1536292910_MetadataUsageId = 7331;

@@ -2882,6 +2882,26 @@ public:
 #pragma clang diagnostic pop
 #endif
 #endif // PLAYTIME_T3236331480_H
+#ifndef RESULT_T1410183157_H
+#define RESULT_T1410183157_H
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+
+// result
+struct  result_t1410183157  : public MonoBehaviour_t3962482529
+{
+public:
+
+public:
+};
+
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#endif // RESULT_T1410183157_H
 #ifndef BASEMESHEFFECT_T2440176439_H
 #define BASEMESHEFFECT_T2440176439_H
 #ifdef __clang__
@@ -3729,8 +3749,9 @@ extern const int32_t g_FieldOffsetTable2052[6] =
 	U3CtextLoadU3Ec__Iterator0_t4238218837::get_offset_of_U24PC_5(),
 };
 extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize2053 = { sizeof (RestartButton_t2817159561), -1, 0, 0 };
-extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize2054 = { sizeof (RobotRun_t1125469807), -1, 0, 0 };
-extern const int32_t g_FieldOffsetTable2054[13] = 
+extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize2054 = { sizeof (result_t1410183157), -1, 0, 0 };
+extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize2055 = { sizeof (RobotRun_t1125469807), -1, 0, 0 };
+extern const int32_t g_FieldOffsetTable2055[13] = 
 {
 	RobotRun_t1125469807::get_offset_of_S_speed_4(),
 	RobotRun_t1125469807::get_offset_of_R_speed_5(),
@@ -3746,18 +3767,18 @@ extern const int32_t g_FieldOffsetTable2054[13] =
 	RobotRun_t1125469807::get_offset_of_compass_15(),
 	RobotRun_t1125469807::get_offset_of_output_16(),
 };
-extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize2055 = { sizeof (variable_t1275844243), -1, sizeof(variable_t1275844243_StaticFields), 0 };
-extern const int32_t g_FieldOffsetTable2055[2] = 
+extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize2056 = { sizeof (variable_t1275844243), -1, sizeof(variable_t1275844243_StaticFields), 0 };
+extern const int32_t g_FieldOffsetTable2056[2] = 
 {
 	variable_t1275844243_StaticFields::get_offset_of_dic_0(),
 	variable_t1275844243_StaticFields::get_offset_of_max_block_num_1(),
 };
-extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize2056 = { sizeof (U3CPrivateImplementationDetailsU3E_t3057255366), -1, sizeof(U3CPrivateImplementationDetailsU3E_t3057255366_StaticFields), 0 };
-extern const int32_t g_FieldOffsetTable2056[1] = 
+extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize2057 = { sizeof (U3CPrivateImplementationDetailsU3E_t3057255366), -1, sizeof(U3CPrivateImplementationDetailsU3E_t3057255366_StaticFields), 0 };
+extern const int32_t g_FieldOffsetTable2057[1] = 
 {
 	U3CPrivateImplementationDetailsU3E_t3057255366_StaticFields::get_offset_of_U24fieldU2D4B4E4768169D671F6BE32BC93193E086B742C63E_0(),
 };
-extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize2057 = { sizeof (U24ArrayTypeU3D8_t3242499063)+ sizeof (RuntimeObject), sizeof(U24ArrayTypeU3D8_t3242499063 ), 0, 0 };
+extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize2058 = { sizeof (U24ArrayTypeU3D8_t3242499063)+ sizeof (RuntimeObject), sizeof(U24ArrayTypeU3D8_t3242499063 ), 0, 0 };
 #ifdef __clang__
 #pragma clang diagnostic pop
 #endif

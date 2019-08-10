@@ -218,6 +218,8 @@ struct pair_2_t2367318144;
 struct pair_2U5BU5D_t2025350529;
 // playtime
 struct playtime_t3236331480;
+// result
+struct result_t1410183157;
 // variable
 struct variable_t1275844243;
 
@@ -317,7 +319,6 @@ extern String_t* _stringLiteral3476879688;
 extern String_t* _stringLiteral3476879708;
 extern String_t* _stringLiteral3476879709;
 extern String_t* _stringLiteral3554254429;
-extern String_t* _stringLiteral3706709580;
 extern String_t* _stringLiteral3736031680;
 extern String_t* _stringLiteral3759204698;
 extern String_t* _stringLiteral3785662666;
@@ -351,6 +352,7 @@ extern String_t* _stringLiteral430703593;
 extern String_t* _stringLiteral432800745;
 extern String_t* _stringLiteral463222831;
 extern String_t* _stringLiteral489281466;
+extern String_t* _stringLiteral591026506;
 extern String_t* _stringLiteral61343007;
 extern String_t* _stringLiteral765121776;
 extern const RuntimeMethod* Dictionary_2_Add_m78166941_RuntimeMethod_var;
@@ -432,6 +434,8 @@ extern const uint32_t obstacle_Start_m736674335_MetadataUsageId;
 extern const uint32_t playtime_Start_m3882244471_MetadataUsageId;
 extern const uint32_t playtime_Update_m4014970661_MetadataUsageId;
 extern const uint32_t playtime_make_time_m3226406892_MetadataUsageId;
+extern const uint32_t result_Start_m3819231099_MetadataUsageId;
+extern const uint32_t result_Update_m727842097_MetadataUsageId;
 extern const uint32_t variable__cctor_m1887894597_MetadataUsageId;
 extern const uint32_t variable_del_m993790452_MetadataUsageId;
 extern const uint32_t variable_formula_m961413057_MetadataUsageId;
@@ -4675,6 +4679,26 @@ public:
 #pragma clang diagnostic pop
 #endif
 #endif // PLAYTIME_T3236331480_H
+#ifndef RESULT_T1410183157_H
+#define RESULT_T1410183157_H
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+
+// result
+struct  result_t1410183157  : public MonoBehaviour_t3962482529
+{
+public:
+
+public:
+};
+
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#endif // RESULT_T1410183157_H
 #ifndef GRAPHIC_T1660335611_H
 #define GRAPHIC_T1660335611_H
 #ifdef __clang__
@@ -9215,15 +9239,14 @@ extern "C" IL2CPP_METHOD_ATTR void RobotRun_Update_m3087221791 (RobotRun_t112546
 		int32_t L_0 = ((obstacle_t162510631_StaticFields*)il2cpp_codegen_static_fields_for(obstacle_t162510631_il2cpp_TypeInfo_var))->get_flagnum_5();
 		if ((((int32_t)L_0) > ((int32_t)0)))
 		{
-			goto IL_001b;
+			goto IL_0010;
 		}
 	}
 	{
-		__this->set_output_16(_stringLiteral3706709580);
-		goto IL_01a7;
+		goto IL_019c;
 	}
 
-IL_001b:
+IL_0010:
 	{
 		RobotRun_UltrasonicSensor_m3386239907(__this, /*hidden argument*/NULL);
 		RobotRun_CompassSensor_m2350971046(__this, /*hidden argument*/NULL);
@@ -9237,53 +9260,53 @@ IL_001b:
 		int32_t L_5 = __this->get_touch_13();
 		if ((!(((uint32_t)L_5) == ((uint32_t)1))))
 		{
-			goto IL_0097;
+			goto IL_008c;
 		}
 	}
 	{
 		float L_6 = __this->get_S_speed_4();
 		if ((!(((float)L_6) < ((float)(0.0f)))))
 		{
-			goto IL_0080;
+			goto IL_0075;
 		}
 	}
 	{
 		__this->set_S_speed_4((0.0f));
 	}
 
-IL_0080:
+IL_0075:
 	{
 		float L_7 = __this->get_R_speed_5();
 		__this->set_R_speed_5(((float)((float)L_7/(float)(2.0f))));
-		goto IL_00d0;
+		goto IL_00c5;
 	}
 
-IL_0097:
+IL_008c:
 	{
 		int32_t L_8 = __this->get_touch_13();
 		if ((!(((uint32_t)L_8) == ((uint32_t)2))))
 		{
-			goto IL_00d0;
+			goto IL_00c5;
 		}
 	}
 	{
 		float L_9 = __this->get_S_speed_4();
 		if ((!(((float)L_9) > ((float)(0.0f)))))
 		{
-			goto IL_00be;
+			goto IL_00b3;
 		}
 	}
 	{
 		__this->set_S_speed_4((0.0f));
 	}
 
-IL_00be:
+IL_00b3:
 	{
 		float L_10 = __this->get_R_speed_5();
 		__this->set_R_speed_5(((float)((float)L_10/(float)(2.0f))));
 	}
 
-IL_00d0:
+IL_00c5:
 	{
 		Transform_t3600365921 * L_11 = Component_get_transform_m3162698980(__this, /*hidden argument*/NULL);
 		Transform_t3600365921 * L_12 = L_11;
@@ -9318,7 +9341,7 @@ IL_00d0:
 		StringU5BU5D_t1281789340* L_32 = __this->get_lines_8();
 		if ((((int32_t)L_31) < ((int32_t)(((int32_t)((int32_t)(((RuntimeArray *)L_32)->max_length)))))))
 		{
-			goto IL_01a7;
+			goto IL_019c;
 		}
 	}
 	{
@@ -9328,7 +9351,7 @@ IL_00d0:
 		__this->set_R_moter_7((0.0f));
 	}
 
-IL_01a7:
+IL_019c:
 	{
 		return;
 	}
@@ -11268,6 +11291,78 @@ extern "C" IL2CPP_METHOD_ATTR String_t* playtime_make_time_m3226406892 (playtime
 		(L_18)->SetAtUnchecked(static_cast<il2cpp_array_size_t>(4), (String_t*)L_22);
 		String_t* L_23 = String_Concat_m1809518182(NULL /*static, unused*/, L_18, /*hidden argument*/NULL);
 		return L_23;
+	}
+}
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+// System.Void result::.ctor()
+extern "C" IL2CPP_METHOD_ATTR void result__ctor_m4280622719 (result_t1410183157 * __this, const RuntimeMethod* method)
+{
+	{
+		MonoBehaviour__ctor_m1579109191(__this, /*hidden argument*/NULL);
+		return;
+	}
+}
+// System.Void result::Start()
+extern "C" IL2CPP_METHOD_ATTR void result_Start_m3819231099 (result_t1410183157 * __this, const RuntimeMethod* method)
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_method (result_Start_m3819231099_MetadataUsageId);
+		s_Il2CppMethodInitialized = true;
+	}
+	TextU5BU5D_t422084607* V_0 = NULL;
+	{
+		GameObject_t1113636619 * L_0 = Component_get_gameObject_m442555142(__this, /*hidden argument*/NULL);
+		TextU5BU5D_t422084607* L_1 = GameObject_GetComponentsInChildren_TisText_t1901882714_m1445556921(L_0, /*hidden argument*/GameObject_GetComponentsInChildren_TisText_t1901882714_m1445556921_RuntimeMethod_var);
+		V_0 = L_1;
+		TextU5BU5D_t422084607* L_2 = V_0;
+		int32_t L_3 = 0;
+		Text_t1901882714 * L_4 = (L_2)->GetAtUnchecked(static_cast<il2cpp_array_size_t>(L_3));
+		IL2CPP_RUNTIME_CLASS_INIT(String_t_il2cpp_TypeInfo_var);
+		String_t* L_5 = ((String_t_StaticFields*)il2cpp_codegen_static_fields_for(String_t_il2cpp_TypeInfo_var))->get_Empty_2();
+		VirtActionInvoker1< String_t* >::Invoke(73 /* System.Void UnityEngine.UI.Text::set_text(System.String) */, L_4, L_5);
+		return;
+	}
+}
+// System.Void result::Update()
+extern "C" IL2CPP_METHOD_ATTR void result_Update_m727842097 (result_t1410183157 * __this, const RuntimeMethod* method)
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_method (result_Update_m727842097_MetadataUsageId);
+		s_Il2CppMethodInitialized = true;
+	}
+	TextU5BU5D_t422084607* V_0 = NULL;
+	{
+		IL2CPP_RUNTIME_CLASS_INIT(obstacle_t162510631_il2cpp_TypeInfo_var);
+		int32_t L_0 = ((obstacle_t162510631_StaticFields*)il2cpp_codegen_static_fields_for(obstacle_t162510631_il2cpp_TypeInfo_var))->get_flagnum_5();
+		if ((((int32_t)L_0) > ((int32_t)0)))
+		{
+			goto IL_0024;
+		}
+	}
+	{
+		GameObject_t1113636619 * L_1 = Component_get_gameObject_m442555142(__this, /*hidden argument*/NULL);
+		TextU5BU5D_t422084607* L_2 = GameObject_GetComponentsInChildren_TisText_t1901882714_m1445556921(L_1, /*hidden argument*/GameObject_GetComponentsInChildren_TisText_t1901882714_m1445556921_RuntimeMethod_var);
+		V_0 = L_2;
+		TextU5BU5D_t422084607* L_3 = V_0;
+		int32_t L_4 = 0;
+		Text_t1901882714 * L_5 = (L_3)->GetAtUnchecked(static_cast<il2cpp_array_size_t>(L_4));
+		VirtActionInvoker1< String_t* >::Invoke(73 /* System.Void UnityEngine.UI.Text::set_text(System.String) */, L_5, _stringLiteral591026506);
+	}
+
+IL_0024:
+	{
+		return;
 	}
 }
 #ifdef __clang__

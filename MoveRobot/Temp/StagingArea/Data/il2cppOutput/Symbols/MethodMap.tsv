@@ -11466,6 +11466,9 @@ playtime__ctor_m3270034661	System.Void playtime::.ctor()	Assembly-CSharp
 playtime_Start_m3882244471	System.Void playtime::Start()	Assembly-CSharp
 playtime_Update_m4014970661	System.Void playtime::Update()	Assembly-CSharp
 playtime_make_time_m3226406892	System.String playtime::make_time(System.Single)	Assembly-CSharp
+result__ctor_m4280622719	System.Void result::.ctor()	Assembly-CSharp
+result_Start_m3819231099	System.Void result::Start()	Assembly-CSharp
+result_Update_m727842097	System.Void result::Update()	Assembly-CSharp
 variable__ctor_m522387612	System.Void variable::.ctor()	Assembly-CSharp
 variable_name_m816570228	System.String variable::name(System.String,System.Int32)	Assembly-CSharp
 variable_formula_m961413057	System.String variable::formula(System.Int32,System.String[],System.Int32,System.Int32)	Assembly-CSharp

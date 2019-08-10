@@ -127,7 +127,7 @@ public class RobotRun : MonoBehaviour {
         
 
         if(obstacle.flagnum <= 0){
-            output = "ミッションクリア！！";
+            //soutput = "ミッションクリア！！";
 
             
 

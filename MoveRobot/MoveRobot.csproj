@@ -307,6 +307,7 @@
     <Compile Include="Assets\playtime.cs" />
     <Compile Include="Assets\Read.cs" />
     <Compile Include="Assets\RestartButton.cs" />
+    <Compile Include="Assets\result.cs" />
     <Compile Include="Assets\RobotRun.cs" />
     <Compile Include="Assets\variable.cs" />
   </ItemGroup>
