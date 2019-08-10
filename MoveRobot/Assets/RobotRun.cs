@@ -18,19 +18,32 @@ public class RobotRun : MonoBehaviour {
 	int touch = 0;//0 = non, 1 = body, 2 = bamper
 	float[] distance = new float[4];              // 計測距離 f,b,l,r
 	double compass; //方位センサー
-    float start_time_s,play_time;
 	string output = "";
 	
+
+    void Awake()
+    {
+        // PC向けビルドだったらサイズ変更
+        if (Application.platform == RuntimePlatform.WindowsPlayer ||
+            Application.platform == RuntimePlatform.OSXPlayer ||
+            Application.platform == RuntimePlatform.LinuxPlayer ){
+
+                int ScreenWidth = Screen.width;
+                int ScreenHeight = ScreenWidth /16 *9 ;
+
+                Screen.SetResolution(ScreenWidth, ScreenHeight, false);
+        }
+    }
 	 // 読み込んだ情報をGUIとして表示 ただし変換後のコード
     void OnGUI()
     {
-        if(output.Length != 0)GUI.TextArea(new Rect(Screen.width/4, 5, Screen.width-10, 50), output);
+        if(output.Length != 0)GUI.TextArea(new Rect(Screen.width/4, 5, Screen.width/2, 50), output);
     }
     
     // Use this for initialization
     void Start()
     {
-        start_time_s = Time.time;
+        
     	//DontDestroyOnLoad(transform.gameObject);
     	variable.del(0);//不要な変数の削除
         lines = Read.ReadFile();//テキスト読み込み
@@ -114,14 +127,12 @@ public class RobotRun : MonoBehaviour {
         
 
         if(obstacle.flagnum <= 0){
-            output = "ミッションクリア！！" + make_time(play_time);
+            output = "ミッションクリア！！";
 
             
 
         } else{
-            play_time = Time.time - start_time_s;
-            output = make_time(play_time);
-
+            
     	    UltrasonicSensor();
     	    CompassSensor();
     	
@@ -356,18 +367,5 @@ public class RobotRun : MonoBehaviour {
 		}
 		
 		return sl.ToArray();
-    }
-
-    string make_time(float t){
-        int h,m,s;
-        h = (int)t/3600;
-        t %= 3600;
-
-        m = (int)t/60;
-        t %= 60;
-
-        s = (int)t;
-
-        return ""+h+":"+m+":"+s;
     }
 }
