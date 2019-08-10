@@ -18,18 +18,32 @@ public class RobotRun : MonoBehaviour {
 	int touch = 0;//0 = non, 1 = body, 2 = bamper
 	float[] distance = new float[4];              // 計測距離 f,b,l,r
 	double compass; //方位センサー
-
 	string output = "";
 	
+
+    void Awake()
+    {
+        // PC向けビルドだったらサイズ変更
+        if (Application.platform == RuntimePlatform.WindowsPlayer ||
+            Application.platform == RuntimePlatform.OSXPlayer ||
+            Application.platform == RuntimePlatform.LinuxPlayer ){
+
+                int ScreenWidth = Screen.width;
+                int ScreenHeight = ScreenWidth /16 *9 ;
+
+                Screen.SetResolution(ScreenWidth, ScreenHeight, false);
+        }
+    }
 	 // 読み込んだ情報をGUIとして表示 ただし変換後のコード
     void OnGUI()
     {
-        if(output.Length != 0)GUI.TextArea(new Rect(5, 5, Screen.width-10, 50), output);
+        if(output.Length != 0)GUI.TextArea(new Rect(Screen.width/4, 5, Screen.width/2, 50), output);
     }
     
     // Use this for initialization
     void Start()
     {
+        
     	//DontDestroyOnLoad(transform.gameObject);
     	variable.del(0);//不要な変数の削除
         lines = Read.ReadFile();//テキスト読み込み
@@ -37,7 +51,12 @@ public class RobotRun : MonoBehaviour {
 
 	void OnCollisionStay(Collision other)//接触中
     {
-    	if (other.gameObject.tag == "wall" || true){
+        if(other.gameObject.tag == "flag"){
+            Destroy(other.gameObject);
+            obstacle.flagnum--;
+            return;
+        }
+    	//if (other.gameObject.tag == "wall" || true){
         	//Destroy(other.gameObject);  	
 
         	//はじめの衝突位置
@@ -63,15 +82,15 @@ public class RobotRun : MonoBehaviour {
     		}
 
     		//output = ""+(int)angle + " "+(int)robot_angle + " " +touch;
-        }
+        //}
 	}
 
 	void OnCollisionExit(Collision other)//非接触
     {
-    	if (other.gameObject.tag == "wall" || true){
+    	//if (other.gameObject.tag == "wall" || true){
         //	Destroy(other.gameObject);  	
         	touch = 0;
-        }
+        //}
 	}
      
     void UltrasonicSensor(){
@@ -105,42 +124,49 @@ public class RobotRun : MonoBehaviour {
 	void Update () {
     	//output = "" + touch + " " + L_moter + " " + R_moter + " " + S_speed + " " + R_speed;
   	//output = "" + Application.dataPath;
+        
 
+        if(obstacle.flagnum <= 0){
+            output = "ミッションクリア！！";
 
-    	UltrasonicSensor();
-    	CompassSensor();
+            
+
+        } else{
+            
+    	    UltrasonicSensor();
+    	    CompassSensor();
     	
-        arduino();
+            arduino();
     	
-    	//speed_set
-        S_speed = (L_moter + R_moter) / 2;
-        R_speed = L_moter - R_moter;
+    	    //speed_set
+            S_speed = (L_moter + R_moter) / 2;
+            R_speed = L_moter - R_moter;
 
-		if(touch == 1){//body
-			if(S_speed < 0)S_speed =  0;
-			R_speed /= 2;
-		}else if(touch == 2){//bamper
-			if(S_speed > 0)S_speed =  0;
-			R_speed /= 2;
-		}
-		
-		//move
-        this.transform.position += this.transform.forward * Time.deltaTime * 0.080f * S_speed; 
-        transform.Rotate(new Vector3(0, Time.deltaTime * 1.0f* R_speed, 0));
+		    if(touch == 1){//body
+			    if(S_speed < 0)S_speed =  0;
+			    R_speed /= 2;
+            }else if(touch == 2){//bamper
+                if(S_speed > 0)S_speed =  0;
+                R_speed /= 2;
+            }
+            
+            //move
+            this.transform.position += this.transform.forward * Time.deltaTime * 0.080f * S_speed; 
+            transform.Rotate(new Vector3(0, Time.deltaTime * 1.0f* R_speed, 0));
 
-		//浮かばないように
-		Vector3 pos = transform.position;
-		pos.y = 0;
-		transform.position = pos;
-		
-		line_num++;
-        if (line_num >= lines.Length){
-        	line_num = lines.Length-1;
-        	L_moter = 0;
-        	R_moter = 0;
-        }
+            //浮かばないように
+            Vector3 pos = transform.position;
+            pos.y = 0;
+            transform.position = pos;
+            
+            line_num++;
+            if (line_num >= lines.Length){
+                line_num = lines.Length-1;
+                L_moter = 0;
+                R_moter = 0;
+            }
         //for(int i = 0; i < 100000000;i++);
-		
+        }
     }
 
     void arduino(){
