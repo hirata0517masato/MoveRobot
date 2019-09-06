@@ -273,6 +273,14 @@ class Parser : Source {
             if (peek() == ')') {
                 next();
             }
+        }else if(peek() == '!'){
+            next();
+            ret = expr();
+            if(ret.first == 0)ret.first = 1;
+            else ret.first = 0;
+            ret.second = "int";
+            
+        
         } else {
             ret = number();
         }
