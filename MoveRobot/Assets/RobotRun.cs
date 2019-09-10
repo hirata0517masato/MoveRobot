@@ -19,6 +19,7 @@ public class RobotRun : MonoBehaviour {
 	float[] distance = new float[4];              // 計測距離 f,b,l,r
 	double compass; //方位センサー
 	string output = "";
+    float fps_clock = 0.017f;
 	
 
     void Awake()
@@ -47,6 +48,8 @@ public class RobotRun : MonoBehaviour {
     	//DontDestroyOnLoad(transform.gameObject);
     	variable.del(0);//不要な変数の削除
         lines = Read.ReadFile();//テキスト読み込み
+
+        InvokeRepeating("RobotMain", fps_clock, fps_clock);
     }
 
 	void OnCollisionStay(Collision other)//接触中
@@ -122,14 +125,13 @@ public class RobotRun : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-    	//output = "" + touch + " " + L_moter + " " + R_moter + " " + S_speed + " " + R_speed;
-  	//output = "" + Application.dataPath;
-        
+    
+    }
 
-        if(obstacle.flagnum <= 0){
+   // 定時起動関数
+    void RobotMain(){
+       if(obstacle.flagnum <= 0){
             //soutput = "ミッションクリア！！";
-
-            
 
         } else{
             
@@ -151,8 +153,12 @@ public class RobotRun : MonoBehaviour {
             }
             
             //move
-            this.transform.position += this.transform.forward * Time.deltaTime * 0.080f * S_speed; 
-            transform.Rotate(new Vector3(0, Time.deltaTime * 1.0f* R_speed, 0));
+            this.transform.position += this.transform.forward * S_speed * 0.0012f; 
+            transform.Rotate(new Vector3(0, 0.015f* R_speed, 0));
+
+            //this.transform.position += this.transform.forward * Time.deltaTime * 0.080f * S_speed; 
+            //transform.Rotate(new Vector3(0, Time.deltaTime * 1.0f* R_speed, 0));
+
 
             //浮かばないように
             Vector3 pos = transform.position;
@@ -168,13 +174,12 @@ public class RobotRun : MonoBehaviour {
         //for(int i = 0; i < 100000000;i++);
         }
     }
+    
 
     void arduino(){
         
 		string[] words = sensor_value(lines[line_num].Trim().Split(' '));
 		
-	
-        //	Console.WriteLine(block + " " + lines[i]);
 		//output = lines[line_num];
 
 		/*output = "";
