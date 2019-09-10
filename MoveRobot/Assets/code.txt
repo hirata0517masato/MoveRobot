@@ -1,9 +1,9 @@
 ﻿#include"MoveRobot.h"
 
 void loop() { 
-	/* if( bumper() == 1){ */
-	if(bumper() != 0){
-		motor(50,-50);
+	if( bumper() == 1){ 
+	/*if(distance(0) < 10){ */
+ 		motor(50,-50);
 	}else{
 		motor(100,100);
 	}
