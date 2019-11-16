@@ -116,7 +116,7 @@ class Read {
 	static List<string> FormulaTransform(List<string> list){//?C???N???????g??????
 		for(int i = 0; i < list.Count; i++){
         	string[] words = list[i].Trim().Split(' ');
-			if(words.Length >= 3 && words[0] != "motor" && words[0] != "int" && words[0] != "double" && words[0] != "print" && words[0] != "if" && words[0] != "while" && words[0] != "}"){
+			if(words.Length >= 3 && words[0] != "delay" && words[0] != "motor" && words[0] != "int" && words[0] != "double" && words[0] != "print" && words[0] != "if" && words[0] != "while" && words[0] != "}"){
 				if(words[1] != "="){
 					if(words[1] == words[2]){//??u
 						list[i] = words[0] + " = " + words[0] + " " +  words[1] + " 1 ;";

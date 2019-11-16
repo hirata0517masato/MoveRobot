@@ -20,6 +20,8 @@ public class RobotRun : MonoBehaviour {
 	double compass; //方位センサー
 	string output = "";
     float fps_clock = 0.017f;
+    int delay_time,delay_start_time_ms;
+    bool delay_flag = false;
 	
 
     void Awake()
@@ -134,24 +136,32 @@ public class RobotRun : MonoBehaviour {
             //soutput = "ミッションクリア！！";
 
         } else{
+            if(delay_flag){
+                if((int)(Time.time * 1000) - delay_start_time_ms >= delay_time)delay_flag = false;
+            }else{
+                UltrasonicSensor();
+                CompassSensor();
             
-    	    UltrasonicSensor();
-    	    CompassSensor();
-    	
-            arduino();
-    	
-    	    //speed_set
+                arduino();
+                line_num++;
+                if (line_num >= lines.Length){
+                    line_num = lines.Length-1;
+                    L_moter = 0;
+                    R_moter = 0;
+                }
+            }
+            //speed_set
             S_speed = (L_moter + R_moter) / 2;
             R_speed = L_moter - R_moter;
 
-		    if(touch == 1){//body
-			    if(S_speed < 0)S_speed =  0;
-			    R_speed /= 2;
+            if(touch == 1){//body
+                if(S_speed < 0)S_speed =  0;
+                R_speed /= 2;
             }else if(touch == 2){//bamper
                 if(S_speed > 0)S_speed =  0;
                 R_speed /= 2;
             }
-            
+                
             //move
             this.transform.position += this.transform.forward * S_speed * 0.0012f; 
             transform.Rotate(new Vector3(0, 0.015f* R_speed, 0));
@@ -160,18 +170,12 @@ public class RobotRun : MonoBehaviour {
             //transform.Rotate(new Vector3(0, Time.deltaTime * 1.0f* R_speed, 0));
 
 
-            //浮かばないように
+           //浮かばないように
             Vector3 pos = transform.position;
             pos.y = 0;
             transform.position = pos;
-            
-            line_num++;
-            if (line_num >= lines.Length){
-                line_num = lines.Length-1;
-                L_moter = 0;
-                R_moter = 0;
-            }
-        //for(int i = 0; i < 100000000;i++);
+                
+            //for(int i = 0; i < 100000000;i++);
         }
     }
     
@@ -311,6 +315,12 @@ public class RobotRun : MonoBehaviour {
                 } while (flag);
                 line_num -= 2;
             }
+        }else if(words[0] == "delay"){
+            string r = variable.formula(block, words, 2, words.Length - 1);
+            
+			delay_time = int.Parse(new Parser(r).expr().first.ToString());
+            delay_flag = true;
+            delay_start_time_ms = (int)(Time.time * 1000);
         }else if (words[0] == "motor"){
         	string[] moter_f = lines[line_num].Trim().Split(',');
         	string[] motor_l = moter_f[0].Trim().Split(' ');
