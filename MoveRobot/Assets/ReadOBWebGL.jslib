@@ -2,8 +2,11 @@ var ReadOBPlugin = {
   ReadOBJS: function() {
     
     //var ret = 'motor(100,100);';
+    var ret = "";
 
-    var ret = document.getElementById('obstacle').value;
+    if(document.getElementById('obstacle') != null){
+      ret = document.getElementById('obstacle').value;
+    }
 
     var size = lengthBytesUTF8(ret) + 1; // null文字終端となるため+1
     var ptr = _malloc(size);
