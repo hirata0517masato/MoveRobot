@@ -213,7 +213,7 @@ class Read {
         return "C#??\n";
     }
 }
-
+/* 
 public class Read_WebGL : MonoBehaviour {
 	public string result = "";
 
@@ -236,4 +236,4 @@ public class Read_WebGL : MonoBehaviour {
         	//print (result);
     	}
 	}
-}
+}*/

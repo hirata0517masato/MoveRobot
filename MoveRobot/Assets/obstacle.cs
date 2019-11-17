@@ -108,7 +108,7 @@ public class obstacle : MonoBehaviour {
     }
     
 }
-
+/* 
 public class ReadOB_WebGL : MonoBehaviour {
 	public string result = "";
 
@@ -131,4 +131,4 @@ public class ReadOB_WebGL : MonoBehaviour {
         	//print (result);
     	}
 	}
-}
+}*/
