@@ -12,10 +12,12 @@ MoveRobot/Assets/ReadPath.txt
 MoveRobot/Assets/ReadPathOB.txt
 に記述されたファイルを読み込み、
 障害物(BOX),旗（Flag)を設置
+または、ロボットの初期位置、角度を変更
 
 指定方法は
 flag,10,3
 box,-4,6
+robot,2,5,90
 
 など
 
@@ -30,22 +32,25 @@ MoveRobot.exeと同じパスのReadPath.txt
 MoveRobot.exeと同じパスのReadPathOB.txt
 に記述されたファイルを読み込み、
 障害物(BOX),旗（Flag)を設置
+または、ロボットの初期位置、角度を変更
 
 指定方法は
 flag,10,3
 box,-4,6
+robot,2,5,90
 
 など
 
 ///////////////////////////////////////
 使い方(webブラウザにて)
 リポジトリのMoveRobot_WebGLをWebサーバーに置き、MoveRobot_WebGL/index.htmlにアクセス
-テキストボックス（左側）に記述されたソースコードを入力とする
-テキストボックス（右側）に記述された数値（座標）に障害物(BOX),旗（Flag)を設置
+テキストボックス（id = 'code'）に記述されたソースコードを入力とする
+テキストボックス（id = 'obstacle'）に記述された数値（座標）に障害物(BOX),旗（Flag)を設置,または、ロボットの初期位置、角度を変更
 
 指定方法は
 flag,10,3
 box,-4,6
+robot,2,5,90
 
 など
 
