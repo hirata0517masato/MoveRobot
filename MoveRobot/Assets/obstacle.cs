@@ -23,10 +23,34 @@ public class obstacle : MonoBehaviour {
     	List<string> texts = ReadFileObstacle();
         for(int i = 0; i < texts.Count; i++){
             List<string> pos = new List<string>(texts[i].Split(','));
-			if(pos[0] == "box")Make("box",float.Parse(pos[1]), float.Parse(pos[2]) );
-			else if(pos[0] == "flag"){
-				Make("flag",float.Parse(pos[1]), float.Parse(pos[2]) );
-				flagnum++;
+			List<float> num = new List<float>();
+			
+
+			for(int j = 1;j < pos.Count; j++){
+         		try {   
+            		num.Add(float.Parse(pos[j]));
+         		}
+         		catch (FormatException) {
+            		
+         		}
+         		catch (OverflowException) {
+            		
+         		}
+      		}   	 
+
+			if(pos[0] == "box"){
+				if(num.Count >= 2){
+					Make("box",num[0], num[1]);
+				}
+			}else if(pos[0] == "flag"){
+				if(num.Count >= 2){
+					Make("flag",num[0], num[1]);
+					flagnum++;
+				}
+			}else if(pos[0] == "robot"){
+				if(num.Count >= 3){
+					Move(num[0], num[1], num[2]);
+				}
 			}
 
         }
@@ -49,6 +73,22 @@ public class obstacle : MonoBehaviour {
         //GameObject.Find(name + num).transform.localScale = new Vector3(Random.Range(1,3), 1, Random.Range(1,3));//サイズ 当たり判定がおかしくなる
         num++;
     }
+
+	void Move(float x,float z, float angle){
+		var obj = GameObject.Find("Robot");	
+
+		// transformを取得
+        Transform myTransform = obj.transform;
+ 
+        // 座標を取得
+        Vector3 pos = myTransform.position;
+        pos.x = x;    
+        pos.z = z;    
+ 
+        myTransform.position = pos;  // 座標を設定
+
+		obj.transform.eulerAngles = new Vector3(0, angle, 0);
+	}
 	
 	[DllImport("__Internal")]
   	public static extern string ReadOBJS();

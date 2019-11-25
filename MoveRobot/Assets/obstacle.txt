@@ -1,3 +1,4 @@
+robot,0,0,90
 flag,0,3
 flag,0,10
 box,10,10
